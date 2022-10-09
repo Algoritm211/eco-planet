@@ -3,19 +3,27 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/frontend/src",
-  "prefix": "maorix-contract",
+  "prefix": "maorix",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/frontend",
         "index": "apps/frontend/src/index.html",
         "main": "apps/frontend/src/main.ts",
         "polyfills": "apps/frontend/src/polyfills.ts",
         "tsConfig": "apps/frontend/tsconfig.app.json",
-        "assets": ["apps/frontend/src/favicon.ico", "apps/frontend/src/assets"],
-        "styles": ["apps/frontend/src/styles.css"],
+        "assets": [
+          "apps/frontend/src/favicon.ico",
+          "apps/frontend/src/assets"
+        ],
+        "styles": [
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/frontend/src/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -72,12 +80,17 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/frontend/**/*.ts", "apps/frontend/**/*.html"]
+        "lintFilePatterns": [
+          "apps/frontend/**/*.ts",
+          "apps/frontend/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/frontend"],
+      "outputs": [
+        "coverage/apps/frontend"
+      ],
       "options": {
         "jestConfig": "apps/frontend/jest.config.ts",
         "passWithNoTests": true
