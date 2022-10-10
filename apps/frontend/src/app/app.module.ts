@@ -8,11 +8,13 @@ import { HeaderComponent } from './system/header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './system/footer/footer.component';
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
