@@ -3,4 +3,10 @@
     <mat-icon>blur_linear</mat-icon>
   </button>
   <span>Maorix appication</span>
+  <span class="spacer"></span>
+  <ng-container *ngIf="nearAuthService.isSignedIn$ | async" >
+    <button mat-raised-button color="warn" (click)="onLogout()">
+      Logout
+    </button>
+  </ng-container>
 </mat-toolbar>

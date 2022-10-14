@@ -1,6 +1,7 @@
 <maorix-header></maorix-header>
 <main class="main-content">
+  <h2>Are you signed in - {{ nearAuthLogin.isSignedIn$ | async }}</h2>
   <router-outlet></router-outlet>
+  <a mat-button routerLink="/login">Go to login</a>
 </main>
-{{nearAuthLogin.walletStatus$ | async | json}}
 <maorix-footer></maorix-footer>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {NearAuthService} from "../../auth/core/services/near-auth.service";
 
 @Component({
   selector: 'maorix-header',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  constructor(public nearAuthService: NearAuthService) {}
 
-  constructor() {}
+  onLogout() {
+    this.nearAuthService.logout();
+  }
 }
