@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, from, switchMap, tap} from 'rxjs';
-import {getConfig} from "../../../../../near-config";
+import {getConfig} from "../../../../near-config";
 import {connect, WalletConnection} from "near-api-js";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class NearAuthService {
   wallet$ = this.walletStatus.asObservable();
   isSignedIn$ = this.isSignedInStatus.asObservable();
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   initWallet() {
     return from(
@@ -45,6 +46,7 @@ export class NearAuthService {
   logout() {
     this.walletStatus.value.signOut()
     this.isSignedInStatus.next(false)
+    this.router.navigate(['/login']);
     console.log('You are signed out')
   }
 }

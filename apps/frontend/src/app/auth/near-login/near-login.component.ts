@@ -15,8 +15,4 @@ export class NearLoginComponent {
   handleLogin = () => {
     this.nearAuthLogin.login();
   };
-
-  handleLogout = () => {
-    this.nearAuthLogin.logout();
-  };
 }
