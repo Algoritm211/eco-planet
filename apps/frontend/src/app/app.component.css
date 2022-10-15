@@ -3,12 +3,20 @@
   margin: 0 auto;
   padding: calc(var(--spacing-unit) * 4px);
   /* Header and footer - 64px */
-  min-height: calc(100% - 64px - 64px);
+  min-height: calc(100vh - 64px - 64px);
 }
 
 @media (max-width: 600px) {
   .main-content {
     /* Header and footer - 56px */
-    min-height: calc(100% - 56px - 56px);
+    min-height: calc(100vh - 56px - 56px);
   }
+}
+
+.sidenav {
+  min-width: 240px;
+}
+
+.active-list-item {
+  color: #3F51B5; /* Note: You could also use a custom theme */
 }

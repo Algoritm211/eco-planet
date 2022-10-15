@@ -1,7 +1,15 @@
-<maorix-header></maorix-header>
-<main class="main-content">
-  <h2>Are you signed in - {{ nearAuthLogin.isSignedIn$ | async }}</h2>
-  <router-outlet></router-outlet>
-  <a mat-button routerLink="/login">Go to login</a>
-</main>
+<maorix-header (sideNavToggleEvent)="sideNavToggle()"></maorix-header>
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="isSideNavOpened" class="sidenav" [autoFocus]="false">
+    <mat-nav-list>
+      <a routerLink="/dashboard" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">Dashboard</a>
+      <a routerLink="/cabinet" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">Cabinet</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="main-content">
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 <maorix-footer></maorix-footer>

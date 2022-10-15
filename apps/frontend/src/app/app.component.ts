@@ -8,9 +8,14 @@ import {Subject, takeUntil} from "rxjs";
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  isSideNavOpened = false;
 
   unsubscribe$ = new Subject<void>();
   constructor(public nearAuthLogin: NearAuthService) {
+  }
+
+  sideNavToggle() {
+    this.isSideNavOpened = !this.isSideNavOpened
   }
 
   ngOnInit() {
