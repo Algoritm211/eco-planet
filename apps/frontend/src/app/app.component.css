@@ -10,6 +10,7 @@
   .main-content {
     /* Header and footer - 56px */
     min-height: calc(100vh - 56px - 56px);
+    padding: calc(var(--spacing-unit) * 2px);
   }
 }
 

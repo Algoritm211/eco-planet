@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <p>Change your name</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Please enter new name</mat-label>
+      <input matInput [(ngModel)]="name" name="name">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="button__group">
+    <button mat-raised-button color="warn" (click)="onCancel()" type="button">Cancel</button>
+    <button mat-raised-button color="primary" type="submit">Change</button>
+  </div>
+</form>
