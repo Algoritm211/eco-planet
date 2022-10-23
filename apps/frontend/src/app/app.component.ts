@@ -3,7 +3,7 @@ import {NearAuthService} from "./auth/core/services/near-auth.service";
 import {Subject, takeUntil} from "rxjs";
 
 @Component({
-  selector: 'maorix-contract-root',
+  selector: 'maorix-eco-contract-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })

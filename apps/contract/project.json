@@ -1,0 +1,30 @@
+{
+  "name": "contract",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/contract",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "inputs": ["default"],
+      "options": {
+        "commands": [
+          "npm run build"
+        ],
+        "cwd": "apps/contract/contract"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "inputs": ["default"],
+      "options": {
+        "commands": [
+          "npm run test"
+        ],
+        "cwd": "apps/contract/"
+      }
+    }
+  },
+  "tags": []
+}

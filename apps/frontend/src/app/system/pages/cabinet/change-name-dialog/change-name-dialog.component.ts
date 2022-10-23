@@ -19,7 +19,7 @@ export class ChangeNameDialogComponent {
   ) {}
 
   onSubmit() {
-    //TODO make submit with contract methods
+    //TODO make submit with eco-contract methods
     console.log(this.name)
   }
 
