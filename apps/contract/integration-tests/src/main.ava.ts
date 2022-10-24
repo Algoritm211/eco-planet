@@ -51,3 +51,26 @@ test('Get user', async (t) => {
     { accountId: 'test-account.test.near', name: 'Max', award: 0, socialRating: 0 }
   )
 })
+
+test('Get users', async (t) => {
+  const { root, contract } = t.context.accounts;
+
+  const mockUser = { name: 'Alex' };
+
+  await root.call<User>(contract, 'addUser', mockUser);
+
+  const allUsers = await contract.view<User[]>('getUsers');
+  t.is(allUsers.length, 1)
+  t.is(allUsers[0].name, 'Alex')
+})
+
+test('User contributes to environment', async (t) => {
+  const { root, contract } = t.context.accounts;
+  const mockUser = { name: 'Alex' };
+  await root.call<User>(contract, 'addUser', mockUser);
+
+  await root.call<User>(contract, 'newIncomeDataFromUser', {amount: 25});
+  const newUser = await root.call<User>(contract, 'newIncomeDataFromUser', {amount: 25});
+  t.is(newUser.socialRating, 1.4)
+  t.is(newUser.award, 17.5)
+});
