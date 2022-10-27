@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PersonalCabinetComponent } from './personal-cabinet/personal-cabinet.component';
 import { CabinetRoutingModule } from './cabinet-routing.module';
-import { UsersDashboardComponent } from '../dashboard/users-dashboard/users-dashboard.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
@@ -12,11 +11,11 @@ import { ChangeNameDialogComponent } from './change-name-dialog/change-name-dial
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
     PersonalCabinetComponent,
-    UsersDashboardComponent,
     ChangeNameDialogComponent,
   ],
   imports: [
@@ -30,6 +29,7 @@ import {FormsModule} from "@angular/forms";
     MatDialogModule,
     MatInputModule,
     FormsModule,
+    MatPaginatorModule,
   ],
 })
 export class CabinetModule {}

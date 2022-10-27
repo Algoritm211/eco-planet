@@ -15,8 +15,3 @@
   gap: calc(var(--spacing-unit) * 3px);
   justify-content: center;
 }
-
-.mat-success {
-  background-color: green;
-  color: #fff;
-}

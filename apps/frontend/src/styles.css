@@ -14,3 +14,8 @@ body {
 :root {
   --spacing-unit: 8;
 }
+
+.mat-success {
+  background-color: green;
+  color: #fff;
+}
