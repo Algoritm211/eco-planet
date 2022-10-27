@@ -1,6 +1,6 @@
 import { Worker, NearAccount } from 'near-workspaces';
 import anyTest, { TestFn } from 'ava';
-import { User } from '../../contract/src/contract'
+import {User} from "@maorix-contract/types";
 
 const test = anyTest as TestFn<{
   worker: Worker;
