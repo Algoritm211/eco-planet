@@ -17,6 +17,10 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
   },
+  {
+    path: 'qr-contribute',
+    loadChildren: () => import('./system/pages/contribution-scanner/contribution-scanner.module').then((m) => m.ContributionScannerModule)
+  }
 ];
 
 @NgModule({

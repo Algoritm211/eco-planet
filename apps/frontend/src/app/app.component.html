@@ -2,8 +2,15 @@
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="isSideNavOpened" class="sidenav" [autoFocus]="false">
     <mat-nav-list>
-      <a routerLink="/dashboard" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">Dashboard</a>
-      <a routerLink="/cabinet" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">Cabinet</a>
+      <a routerLink="/dashboard" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">
+        Dashboard
+      </a>
+      <a routerLink="/cabinet" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">
+        Cabinet
+      </a>
+      <a routerLink="/qr-contribute" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">
+        Contribute
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="main-content">
