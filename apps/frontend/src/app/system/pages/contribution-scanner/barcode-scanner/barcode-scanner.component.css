@@ -1,0 +1,5 @@
+.qr-button {
+  display: block;
+  margin: 0 auto;
+  padding: calc(var(--spacing-unit) * 2px);
+}
