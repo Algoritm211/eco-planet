@@ -24,7 +24,6 @@ export class NearAuthService {
       switchMap(async (near) => {
         return new WalletConnection(near, 'my-app')
       }),
-      // delay( 1),
       // Step 2 - emitting value of wallet
       tap(async (val) => {
         this.walletStatus.next(val)
@@ -38,8 +37,8 @@ export class NearAuthService {
 
   login() {
     from(this.walletStatus.value.requestSignIn({
-      contractId: 'wrap.testnet',
-      methodNames: ['near_deposit', 'ft_balance_of', 'near_withdraw'],
+      contractId: 'dev-1667042563649-66373372156087',
+      methodNames: ['addUser', 'getUser', 'getUsers', 'newIncomeDataFromUser'],
     })).subscribe();
   }
 

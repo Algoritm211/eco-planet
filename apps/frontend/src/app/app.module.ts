@@ -11,6 +11,10 @@ import { FooterComponent } from './system/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import {UserState} from "./shared/ngxs/user/user.state";
+import { NgxsModule } from '@ngxs/store';
+import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,11 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
+    NgxsModule.forRoot([
+      UserState,
+    ]),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    NgxsLoggerPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

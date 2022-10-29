@@ -8,7 +8,7 @@
     "build:contract": "cd contract && npm run build",
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "cd contract && npm test",
-    "test:integration": "cd integration-tests && npm test -- -- \"./contract/build/hello_near.wasm\"",
+    "test:integration": "cd integration-tests && npm test -- -- \"./contract/build/eco_near.wasm\"",
     "postinstall": "echo no frontend && cd integration-tests && npm install && cd .. && cd contract && npm install"
   },
   "devDependencies": {

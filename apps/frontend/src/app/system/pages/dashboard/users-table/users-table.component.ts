@@ -5,11 +5,11 @@ import {MatTableDataSource} from '@angular/material/table';
 import {User} from '@maorix-contract/types';
 
 const USERS: User[] = [
-  {accountId: 'test.net', name: 'Alex', award: 5.77, socialRating: 90},
-  {accountId: 'max.net', name: 'Max', award: 7.8, socialRating: 105},
-  {accountId: 'so.my.net', name: 'Andrii', award: 56, socialRating: 34},
-  {accountId: 'all.ok.net', name: 'Yulia', award: 42, socialRating: 55},
-  {accountId: 'murad.near.net', name: 'Murad', award: 5, socialRating: 67},
+  {accountId: 'test.net', name: 'Alex', contribution: 10, award: 5.77, socialRating: 90},
+  {accountId: 'max.net', name: 'Max', contribution: 10, award: 7.8, socialRating: 105},
+  {accountId: 'so.my.net', name: 'Andrii', contribution: 10, award: 56, socialRating: 34},
+  {accountId: 'all.ok.net', name: 'Yulia', contribution: 10, award: 42, socialRating: 55},
+  {accountId: 'murad.near.net', name: 'Murad', contribution: 10, award: 5, socialRating: 67},
 ]
 
 @Component({

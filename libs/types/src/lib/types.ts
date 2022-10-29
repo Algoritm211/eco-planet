@@ -3,6 +3,8 @@ export interface User {
   accountId: string
   // Number of tokens for award in the end of month
   award: number
+  // Number of bottles which was contributed
+  contribution: number;
   // Name
   name: string
   // HERE QUESTIONG WHAT IT IS
