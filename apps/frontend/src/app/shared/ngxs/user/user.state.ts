@@ -4,10 +4,11 @@ import {LoadProfileFailed, LoadProfileSuccess, LoadUserProfile} from "./user.act
 import {ContractService} from "../../contract/contract.service";
 import {catchError, tap} from "rxjs";
 import {Injectable} from "@angular/core";
+import {DataStatus} from "../../types";
 
 interface UserStateModel {
   user: User | null;
-  status?: 'loading' | 'error' | 'confirmed'
+  status?: DataStatus
 }
 
 
@@ -28,25 +29,25 @@ export class UserState {
     return state.user;
   }
 
+  @Selector()
+  static getStatus(state: UserStateModel) {
+    return state.status;
+  }
+
   @Action(LoadUserProfile, {cancelUncompleted: true})
   loadUserProfile({dispatch, patchState}: StateContext<UserStateModel>) {
     patchState({status: 'loading'});
 
     return this.contractService.loadUser().pipe(
-      tap(user => user ? dispatch(LoadProfileSuccess) : ''
+      tap(user => user ? () => {
+          dispatch(LoadProfileSuccess)
+          patchState({user: user})
+        } : ''
       ),
       catchError((err) => {
         console.error(err)
         return dispatch(LoadProfileFailed)
       }),
-      tap(user => {
-        console.log('UUUUUUUUUSEEEE', user)
-        if (user) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          patchState({user: user})
-        }
-      })
     )
   }
 

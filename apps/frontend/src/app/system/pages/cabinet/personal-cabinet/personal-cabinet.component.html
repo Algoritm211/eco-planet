@@ -1,41 +1,59 @@
-<div>
-  <h1>New day, nice to see you!</h1>
-  <mat-divider></mat-divider>
+<ng-container *ngIf="user$ | async else noUser">
+  <div>
+    <h1>New day, nice to see you!</h1>
+    <mat-divider></mat-divider>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Address - {{ (nearAuthService.wallet$ | async)!.getAccountId() }}</mat-card-title>
-      <mat-card-subtitle>Here you can see your stats</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-list>
-        <ng-container *ngFor="let item of infoList">
-          <mat-list-item>
-            <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
-            <div class="list__item-info">
-              <div class="list__item-info-title">
-                {{item.propName}}
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Address - {{ (nearAuthService.wallet$ | async)!.getAccountId() }}</mat-card-title>
+        <mat-card-subtitle>Here you can see your stats</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <ng-container *ngFor="let item of infoList">
+            <mat-list-item>
+              <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
+              <div class="list__item-info">
+                <div class="list__item-info-title">
+                  {{item.propName}}
+                </div>
+                <div class="list__item-info-value">
+                  {{item.propValue}}
+                </div>
               </div>
-              <div class="list__item-info-value">
-                {{item.propValue}}
-              </div>
-            </div>
-          </mat-list-item>
-          <mat-divider></mat-divider>
-        </ng-container>
-      </mat-list>
-    </mat-card-content>
-  </mat-card>
-  <div class="button__group">
-    <button mat-raised-button color="warn" (click)="openChangeNameDialog()">
-      Change username
-    </button>
-    <button mat-raised-button color="success">
-      Make contribution
-    </button>
-  </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </ng-container>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+    <div class="button__group">
+      <button mat-raised-button color="warn" (click)="openChangeNameDialog()">
+        Change username
+      </button>
+      <button mat-raised-button color="success">
+        Make contribution
+      </button>
+    </div>
 
-  <pre>
+    <pre>
     {{ user$ | async | json }}
   </pre>
-</div>
+  </div>
+</ng-container>
+
+<ng-template #noUser>
+  <h1>Please, create profile for future contributions</h1>
+  <form (ngSubmit)="onCreateUser()">
+    <div mat-dialog-content>
+      <p>Change your name</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Please enter new name</mat-label>
+        <input matInput [(ngModel)]="name" name="name">
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-raised-button color="primary" type="submit">Change</button>
+    </div>
+  </form>
+</ng-template>

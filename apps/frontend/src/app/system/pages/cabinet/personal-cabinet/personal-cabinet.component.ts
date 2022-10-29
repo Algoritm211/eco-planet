@@ -7,6 +7,8 @@ import {Select, Store} from "@ngxs/store";
 import {User} from "@maorix-contract/types";
 import {LoadUserProfile} from "../../../../shared/ngxs/user/user.actions";
 import {Observable} from "rxjs";
+import {DataStatus} from "../../../../shared/types";
+import {ContractService} from "../../../../shared/contract/contract.service";
 
 @Component({
   selector: 'maorix-personal-cabinet',
@@ -21,9 +23,13 @@ export class PersonalCabinetComponent implements OnInit {
     {icon: 'money_bag', propName: 'Your award', propValue: '4.67 NEAR'},
   ]
 
+  name = '';
+
   @Select(UserState.getUser) user$: Observable<User>;
+  @Select(UserState.getStatus) status$: Observable<DataStatus>;
 
   constructor(
+    private contractService: ContractService,
     private store: Store,
     public dialog: MatDialog,
     public nearAuthService: NearAuthService
@@ -33,6 +39,11 @@ export class PersonalCabinetComponent implements OnInit {
     this.store.dispatch(new LoadUserProfile()).subscribe(
       val => console.log(val)
     )
+  }
+
+  onCreateUser() {
+    this.contractService.addUser(this.name)
+      .subscribe(val => console.log(val))
   }
 
   openChangeNameDialog() {

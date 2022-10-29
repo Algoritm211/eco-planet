@@ -37,7 +37,7 @@ export class NearAuthService {
 
   login() {
     from(this.walletStatus.value.requestSignIn({
-      contractId: 'dev-1667042563649-66373372156087',
+      contractId: 'dev-1667070353306-71041769858786',
       methodNames: ['addUser', 'getUser', 'getUsers', 'newIncomeDataFromUser'],
     })).subscribe();
   }

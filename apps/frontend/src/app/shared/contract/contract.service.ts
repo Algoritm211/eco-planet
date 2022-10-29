@@ -19,4 +19,13 @@ export class ContractService {
       })
     )
   }
+
+  addUser(name: string) {
+    return this.nearAuth.wallet$.pipe(
+      switchMap(async (wallet) => {
+        const ecoNear = new EcoNEAR({walletToUse: wallet});
+        return ecoNear.addUser(name);
+      })
+    )
+  }
 }
