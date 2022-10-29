@@ -1,6 +1,6 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {NgxScannerQrcodeComponent} from "ngx-scanner-qrcode";
+import {Result} from "@zxing/library";
 
 @Component({
   selector: 'maorix-barcode-scanner',
@@ -8,22 +8,19 @@ import {NgxScannerQrcodeComponent} from "ngx-scanner-qrcode";
   styleUrls: ['./barcode-scanner.component.css'],
 })
 export class BarcodeScannerComponent {
-  @ViewChild('action', { static: true }) scanner: NgxScannerQrcodeComponent;
+  constructor(private router: Router) {
+  }
 
-  constructor(
-    private router: Router,
-  ) {}
-
-  handleData($event: string) {
-    if ($event) {
-      this.scanner.stop().complete()
+  handleData($event: Result) {
+    if ($event?.getText()) {
+      console.log($event.getText())
       void this.router.navigate(['/dashboard'])
     }
   }
 
-  onError($event: ErrorEvent) {
-    if ($event.message === 'Permission denied') {
-      alert('Please check your camera permissions')
+  checkPermissions($event: boolean) {
+    if (!$event) {
+      alert('Please check your camera permissions and reaload the page')
     }
   }
 }

@@ -1,27 +1,6 @@
-<div class="qr-container">
-  <ngx-scanner-qrcode
-    #action="scanner"
-    (event)="handleData($event)"
-    (error)="onError($event)"
-    [style]="{background:'linear-gradient(#009FFD, #2A2A72)'}"
-  >
-  </ngx-scanner-qrcode>
+<div>
+  <zxing-scanner
+    (permissionResponse)="checkPermissions($event)"
+    (scanComplete)="handleData($event)"
+  ></zxing-scanner>
 </div>
-
-<button
-  class="qr-button"
-  mat-raised-button
-  [disabled]="action.isLoading"
-  (click)="!action.isStart ? action.start() : action.stop()"
->
-  <ng-container *ngIf="!action.isStart else closeScanner">
-    <mat-icon>settings_overscan</mat-icon>
-    Scan QR-code
-  </ng-container>
-
-  <ng-template #closeScanner>
-    <mat-icon>cancel_presentation</mat-icon>
-    Stop scanning QR-code
-  </ng-template>
-
-</button>
