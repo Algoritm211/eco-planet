@@ -8,15 +8,18 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ChangeNameDialogComponent } from './change-name-dialog/change-name-dialog.component';
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
-import {MatPaginatorModule} from "@angular/material/paginator";
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UserCardComponent } from './user-card/user-card.component';
 
 @NgModule({
   declarations: [
     PersonalCabinetComponent,
     ChangeNameDialogComponent,
+    UserCardComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +33,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatInputModule,
     FormsModule,
     MatPaginatorModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class CabinetModule {}

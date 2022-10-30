@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
-import {NearAuthService} from "../../auth/core/services/near-auth.service";
-import {switchMap} from "rxjs";
+import {from} from "rxjs";
 import {EcoNEAR} from "./near-interface";
 
 
@@ -9,23 +8,15 @@ import {EcoNEAR} from "./near-interface";
 })
 export class ContractService {
 
-  constructor(private nearAuth: NearAuthService) {}
+  public ecoNear: EcoNEAR;
+
+  constructor() {}
 
   loadUser() {
-    return this.nearAuth.wallet$.pipe(
-      switchMap(async (wallet) => {
-        const ecoNear = new EcoNEAR({walletToUse: wallet});
-        return ecoNear.getUser();
-      })
-    )
+    return from(this.ecoNear.getUser());
   }
 
   addUser(name: string) {
-    return this.nearAuth.wallet$.pipe(
-      switchMap(async (wallet) => {
-        const ecoNear = new EcoNEAR({walletToUse: wallet});
-        return ecoNear.addUser(name);
-      })
-    )
+    return from(this.ecoNear.addUser(name));
   }
 }

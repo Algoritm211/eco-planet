@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NearAuthService} from "./auth/core/services/near-auth.service";
-import {Subject, takeUntil} from "rxjs";
+import {Subject, takeUntil, tap} from "rxjs";
+import {ContractService} from "./shared/contract/contract.service";
+import { EcoNEAR } from './shared/contract/near-interface';
 
 @Component({
   selector: 'maorix-eco-contract-root',
@@ -11,7 +13,10 @@ export class AppComponent implements OnInit, OnDestroy {
   isSideNavOpened = false;
 
   unsubscribe$ = new Subject<void>();
-  constructor(public nearAuthLogin: NearAuthService) {
+  constructor(
+    private contractService: ContractService,
+    public nearAuthLogin: NearAuthService
+  ) {
   }
 
   sideNavToggle() {
@@ -20,7 +25,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.nearAuthLogin.initWallet()
-      .pipe(takeUntil(this.unsubscribe$))
+      .pipe(
+        takeUntil(this.unsubscribe$),
+        tap(val => this.contractService.ecoNear = new EcoNEAR({walletToUse: val}))
+      )
       .subscribe()
   }
 

@@ -21,7 +21,7 @@ class EcoContract {
 
   @call({})
   addUser({name}: User) {
-    const userWallet = near.currentAccountId();
+    const userWallet = near.signerAccountId();
     near.log(`Adding user with accountId=${userWallet}`)
     if (this.users.get(userWallet)) {
       near.log(`User with accountId=${userWallet} already exists`)
@@ -31,6 +31,7 @@ class EcoContract {
     const user = new UnorderedMap(`user-${userWallet}`);
     user.set('accountId', userWallet);
     user.set('name', name || Date.now().toString());
+    user.set('contribution', 0);
     user.set('award', 0);
     user.set('socialRating', 0);
 
@@ -63,9 +64,10 @@ class EcoContract {
 
   @call({})
   newIncomeDataFromUser({amount}: ContributionDTO) {
-    const userWallet = near.currentAccountId();
+    const userWallet = near.signerAccountId();
 
     const user = UnorderedMap.deserialize(this.users.get(userWallet) as UnorderedMap);
+    user.set('contribution', Number(user.get('contribution')) + amount)
     user.set(
       'award',
       Number(user.get('award')) + amount * Number(user.get('socialRating'))

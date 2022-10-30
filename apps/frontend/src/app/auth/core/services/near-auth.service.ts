@@ -3,6 +3,7 @@ import {BehaviorSubject, from, switchMap, tap} from 'rxjs';
 import {getConfig} from "../../../../near-config";
 import {connect, WalletConnection} from "near-api-js";
 import {Router} from "@angular/router";
+import {CONTRACT_ID} from "../../../shared/constants";
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,12 @@ export class NearAuthService {
 
   private walletStatus = new BehaviorSubject<WalletConnection>({} as WalletConnection);
   private isSignedInStatus = new BehaviorSubject<boolean>(false);
-  wallet$ = this.walletStatus.asObservable();
-  isSignedIn$ = this.isSignedInStatus.asObservable();
+  public wallet$ = this.walletStatus.asObservable();
+  public isSignedIn$ = this.isSignedInStatus.asObservable();
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router
+  ) {}
 
   initWallet() {
     return from(
@@ -37,7 +40,7 @@ export class NearAuthService {
 
   login() {
     from(this.walletStatus.value.requestSignIn({
-      contractId: 'dev-1667070353306-71041769858786',
+      contractId: CONTRACT_ID,
       methodNames: ['addUser', 'getUser', 'getUsers', 'newIncomeDataFromUser'],
     })).subscribe();
   }

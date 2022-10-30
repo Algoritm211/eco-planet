@@ -1,6 +1,6 @@
 import {Action, Selector, State, StateContext} from "@ngxs/store";
 import {User} from "@maorix-contract/types";
-import {LoadProfileFailed, LoadProfileSuccess, LoadUserProfile} from "./user.actions";
+import {AddNewUser, LoadProfileFailed, LoadProfileSuccess, LoadUserProfile} from "./user.actions";
 import {ContractService} from "../../contract/contract.service";
 import {catchError, tap} from "rxjs";
 import {Injectable} from "@angular/core";
@@ -34,15 +34,32 @@ export class UserState {
     return state.status;
   }
 
+  @Action(AddNewUser, {cancelUncompleted: true})
+  addNewUser({dispatch, patchState}: StateContext<UserStateModel>, {name}: AddNewUser) {
+    patchState({status: 'loading'});
+
+    // Changing methods now return an error because absence of process.env in near-api-js
+    return this.contractService.addUser(name).pipe(
+      tap(() => {
+          dispatch(LoadProfileSuccess)
+        }
+      ),
+      catchError(() => {
+        dispatch(new LoadUserProfile())
+        return dispatch(LoadProfileFailed)
+      }),
+    )
+  }
+
   @Action(LoadUserProfile, {cancelUncompleted: true})
   loadUserProfile({dispatch, patchState}: StateContext<UserStateModel>) {
     patchState({status: 'loading'});
 
     return this.contractService.loadUser().pipe(
-      tap(user => user ? () => {
+      tap((user) => {
           dispatch(LoadProfileSuccess)
           patchState({user: user})
-        } : ''
+        }
       ),
       catchError((err) => {
         console.error(err)

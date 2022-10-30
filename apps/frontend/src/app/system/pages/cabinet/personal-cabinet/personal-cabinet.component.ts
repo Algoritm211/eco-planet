@@ -5,7 +5,7 @@ import {ChangeNameDialogComponent} from "../change-name-dialog/change-name-dialo
 import {UserState} from "../../../../shared/ngxs/user/user.state";
 import {Select, Store} from "@ngxs/store";
 import {User} from "@maorix-contract/types";
-import {LoadUserProfile} from "../../../../shared/ngxs/user/user.actions";
+import {AddNewUser, LoadUserProfile} from "../../../../shared/ngxs/user/user.actions";
 import {Observable} from "rxjs";
 import {DataStatus} from "../../../../shared/types";
 import {ContractService} from "../../../../shared/contract/contract.service";
@@ -16,13 +16,6 @@ import {ContractService} from "../../../../shared/contract/contract.service";
   styleUrls: ['./personal-cabinet.component.css'],
 })
 export class PersonalCabinetComponent implements OnInit {
-  //TODO mock data, we need to use real data
-  infoList = [
-    {icon: 'person_outline', propName: 'Name', propValue: 'Alexey'},
-    {icon: 'local_florist', propName: 'Contributed', propValue: '10'},
-    {icon: 'money_bag', propName: 'Your award', propValue: '4.67 NEAR'},
-  ]
-
   name = '';
 
   @Select(UserState.getUser) user$: Observable<User>;
@@ -36,20 +29,17 @@ export class PersonalCabinetComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.store.dispatch(new LoadUserProfile()).subscribe(
-      val => console.log(val)
-    )
+    this.store.dispatch(new LoadUserProfile())
   }
 
   onCreateUser() {
-    this.contractService.addUser(this.name)
-      .subscribe(val => console.log(val))
+    this.store.dispatch(new AddNewUser(this.name))
   }
 
-  openChangeNameDialog() {
+  openChangeNameDialog(name: string) {
     this.dialog.open(ChangeNameDialogComponent, {
       width: '250px',
-      data: {name: this.infoList[1].propValue},
+      data: {name},
     });
   }
 }
