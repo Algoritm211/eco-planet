@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
-import {from} from "rxjs";
+import {from, Observable} from "rxjs";
 import {EcoNEAR} from "./near-interface";
+import {User} from "@maorix-contract/types";
 
 
 @Injectable({
@@ -14,6 +15,10 @@ export class ContractService {
 
   loadUser() {
     return from(this.ecoNear.getUser());
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return from(this.ecoNear.getAllUsers())
   }
 
   addUser(name: string) {

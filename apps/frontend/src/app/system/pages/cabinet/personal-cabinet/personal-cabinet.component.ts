@@ -8,7 +8,6 @@ import {User} from "@maorix-contract/types";
 import {AddNewUser, LoadUserProfile} from "../../../../shared/ngxs/user/user.actions";
 import {Observable} from "rxjs";
 import {DataStatus} from "../../../../shared/types";
-import {ContractService} from "../../../../shared/contract/contract.service";
 
 @Component({
   selector: 'maorix-personal-cabinet',
@@ -22,7 +21,6 @@ export class PersonalCabinetComponent implements OnInit {
   @Select(UserState.getStatus) status$: Observable<DataStatus>;
 
   constructor(
-    private contractService: ContractService,
     private store: Store,
     public dialog: MatDialog,
     public nearAuthService: NearAuthService

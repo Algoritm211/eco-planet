@@ -1,43 +1,52 @@
-<mat-form-field appearance="standard">
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Alex" #input>
-</mat-form-field>
+<ng-container *ngIf="(loading$ | async) === false else loading">
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Alex" #input>
+  </mat-form-field>
 
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
 
-    <!-- Account Id Column -->
-    <ng-container matColumnDef="accountId">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-      <td mat-cell *matCellDef="let row"> {{row.accountId}} </td>
-    </ng-container>
+      <!-- Account Id Column -->
+      <ng-container matColumnDef="accountId">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let row"> {{row.accountId}} </td>
+      </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
-    </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      </ng-container>
 
-    <!-- Award Column -->
-    <ng-container matColumnDef="award">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Award </th>
-      <td mat-cell *matCellDef="let row"> {{row.award}} </td>
-    </ng-container>
+      <!-- Award Column -->
+      <ng-container matColumnDef="award">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Award </th>
+        <td mat-cell *matCellDef="let row"> {{row.award}} </td>
+      </ng-container>
 
-    <!-- Social Rating Column -->
-    <ng-container matColumnDef="socialRating">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Social Rating </th>
-      <td mat-cell *matCellDef="let row"> {{row.socialRating}} </td>
-    </ng-container>
+      <!-- Social Rating Column -->
+      <ng-container matColumnDef="socialRating">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Social Rating </th>
+        <td mat-cell *matCellDef="let row"> {{row.socialRating}} </td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-    <!-- Row shown when there is no matching data. -->
-    <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-    </tr>
-  </table>
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
-</div>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</ng-container>
+
+
+<ng-template #loading>
+  <div class="loader">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

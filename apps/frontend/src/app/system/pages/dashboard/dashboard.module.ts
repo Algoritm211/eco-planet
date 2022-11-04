@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardHeaderComponent } from './dashboard-header/dashboard-header.component';
 import {MatButtonModule} from "@angular/material/button";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MatDividerModule} from "@angular/material/divider";
     MatInputModule,
     MatButtonModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class DashboardModule {}

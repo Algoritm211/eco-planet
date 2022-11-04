@@ -10,3 +10,9 @@ table {
 td, th {
   width: 25%;
 }
+
+.loader {
+  padding: calc(var(--spacing-unit) * 2px);
+  display: flex;
+  justify-content: center;
+}
