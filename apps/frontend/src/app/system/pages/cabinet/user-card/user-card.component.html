@@ -34,7 +34,7 @@
             Your award
           </div>
           <div class="list__item-info-value">
-            {{ user.award }} NEAR
+            {{ user.award | number: '1.2-2' }} NEAR
           </div>
         </div>
       </mat-list-item>

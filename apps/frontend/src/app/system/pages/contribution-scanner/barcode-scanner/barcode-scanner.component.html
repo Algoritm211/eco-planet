@@ -1,4 +1,10 @@
 <div>
+  <button mat-raised-button color="warn" (click)="handleMockData()">
+    Make test contribution
+  </button>
+  <pre>
+    {{MOCK_CONTRIBUTION | json}}
+  </pre>
   <zxing-scanner
     (permissionResponse)="checkPermissions($event)"
     (scanComplete)="handleData($event)"

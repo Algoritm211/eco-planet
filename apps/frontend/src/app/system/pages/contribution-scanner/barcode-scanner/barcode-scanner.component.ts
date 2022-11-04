@@ -1,6 +1,10 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {Result} from "@zxing/library";
+import {ContributionDTO} from "@maorix-contract/types";
+import {ContractService} from "../../../../shared/contract/contract.service";
+import {finalize} from "rxjs";
+
 
 @Component({
   selector: 'maorix-barcode-scanner',
@@ -8,7 +12,21 @@ import {Result} from "@zxing/library";
   styleUrls: ['./barcode-scanner.component.css'],
 })
 export class BarcodeScannerComponent {
-  constructor(private router: Router) {
+  MOCK_CONTRIBUTION: ContributionDTO = {
+    amount: 7
+  }
+
+  constructor(
+    private contractService: ContractService,
+    private router: Router
+  ) {
+  }
+
+  handleMockData() {
+    this.contractService.makeContribution(this.MOCK_CONTRIBUTION)
+      .pipe(
+        finalize(() => this.router.navigate(['/cabinet']))
+      ).subscribe();
   }
 
   handleData($event: Result) {

@@ -18,7 +18,7 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     ContributionScannerRoutingModule,
     ZXingScannerModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
   ],
 })
 export class ContributionScannerModule {

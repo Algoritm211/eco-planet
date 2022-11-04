@@ -1,6 +1,7 @@
 import {WalletConnection} from "near-api-js";
 import { providers } from 'near-api-js';
 import {CONTRACT_ID} from "../constants";
+import {ContributionDTO} from "@maorix-contract/types";
 
 const THIRTY_TGAS = '30000000000000';
 
@@ -12,7 +13,7 @@ export class EcoNEAR {
     this.wallet = walletToUse;
   }
 
-  async getUser() {
+  async loadUser() {
     return this.callViewFunction('getUser', {id: this.wallet.getAccountId()})
   }
 
@@ -21,12 +22,21 @@ export class EcoNEAR {
   }
 
   async addUser(name: string) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    const result = await this.wallet.account().functionCall({
+    return this.callChangeFunction('addUser', {name})
+  }
+
+  async makeContribution(data: ContributionDTO) {
+    return this.callChangeFunction('newIncomeDataFromUser', {...data})
+  }
+
+
+  // For functions which are changing state
+  private async callChangeFunction(method: string, params: Record<string, unknown> = {}) {
+    const result = await this.wallet.account().functionCall(
+      {
       contractId: this.contractId,
-      methodName: 'addUser',
-      args: {name},
+      methodName: method,
+      args: params,
       gas: THIRTY_TGAS,
     })
 

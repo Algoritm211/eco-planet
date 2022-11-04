@@ -22,13 +22,13 @@
       <!-- Award Column -->
       <ng-container matColumnDef="award">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Award </th>
-        <td mat-cell *matCellDef="let row"> {{row.award}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.award | number: '1.2-2'}} </td>
       </ng-container>
 
       <!-- Social Rating Column -->
       <ng-container matColumnDef="socialRating">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Social Rating </th>
-        <td mat-cell *matCellDef="let row"> {{row.socialRating}} </td>
+        <td mat-cell *matCellDef="let row"> {{row.socialRating | number: '1.2-2'}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
