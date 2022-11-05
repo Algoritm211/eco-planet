@@ -10,7 +10,7 @@
       <!-- Account Id Column -->
       <ng-container matColumnDef="accountId">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-        <td mat-cell *matCellDef="let row"> {{row.accountId}} </td>
+        <td mat-cell *matCellDef="let row"> {{(row.accountId | slice:0:6)+'...'}} </td>
       </ng-container>
 
       <!-- Name Column -->

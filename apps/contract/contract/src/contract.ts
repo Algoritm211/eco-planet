@@ -67,12 +67,16 @@ class EcoContract {
     const userWallet = near.signerAccountId();
 
     const user = UnorderedMap.deserialize(this.users.get(userWallet) as UnorderedMap);
-    user.set('contribution', Number(user.get('contribution')) + amount)
+
+    user.set('contribution', Number(user.get('contribution')) + amount);
+
     user.set(
       'award',
       Number(user.get('award')) + amount * Number(user.get('socialRating'))
     );
+
     user.set('socialRating', Number(user.get('socialRating')) + 0.7)
+
     this.users.set(userWallet, user);
     near.log(`User with hash ${userWallet} was updated`);
     return this.convertToObject(user)

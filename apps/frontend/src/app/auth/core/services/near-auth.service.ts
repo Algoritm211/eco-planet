@@ -25,7 +25,7 @@ export class NearAuthService {
     ).pipe(
       // Step 1 - getting near object and return wallet
       switchMap(async (near) => {
-        return new WalletConnection(near, 'my-app')
+        return new WalletConnection(near, 'eco-application')
       }),
       // Step 2 - emitting value of wallet
       tap(async (val) => {
@@ -42,6 +42,7 @@ export class NearAuthService {
     from(this.walletStatus.value.requestSignIn({
       contractId: CONTRACT_ID,
       methodNames: ['addUser', 'getUser', 'getUsers', 'newIncomeDataFromUser'],
+      successUrl: `${window.location.origin}/cabinet`
     })).subscribe();
   }
 
