@@ -20,6 +20,10 @@ const routes: Routes = [
   {
     path: 'qr-contribute',
     loadChildren: () => import('./system/pages/contribution-scanner/contribution-scanner.module').then((m) => m.ContributionScannerModule)
+  },
+  {
+    path: 'news',
+    loadChildren: () => import('./system/pages/news/news.module').then((m) => m.NewsModule)
   }
 ];
 

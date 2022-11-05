@@ -1,0 +1,25 @@
+<mat-card class="news-card">
+  <mat-card-header>
+    <div
+      mat-card-avatar class="author-avatar"
+      [ngStyle]="{'background-image': 'url(' + news.author.avatarUrl + ')'}"
+    ></div>
+    <mat-card-title>{{news.author.name}}</mat-card-title>
+    <mat-card-subtitle>{{news.author.jobTitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <div class="news-thumbnail-wrapper">
+    <img mat-card-image class="news-thumbnail" [src]="news.thumbnailUrl" alt="Photo of a news">
+  </div>
+  <mat-card-content>
+    <h2>{{news.title}}</h2>
+    <p>
+      {{news.description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>
+      LIKE
+    </button>
+    <button mat-button>READ</button>
+  </mat-card-actions>
+</mat-card>

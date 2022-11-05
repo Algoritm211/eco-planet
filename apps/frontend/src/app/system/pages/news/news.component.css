@@ -1,0 +1,4 @@
+.news-wrapper {
+  display: grid;
+  gap: calc(var(--spacing-unit) * 1px);
+}

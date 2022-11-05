@@ -1,0 +1,21 @@
+.news-card {
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.news-thumbnail-wrapper {
+  overflow: hidden;
+  margin: 0 -16px 16px -16px;
+}
+
+.news-thumbnail {
+  transition: transform 0.5s;
+}
+
+.news-card:hover .news-thumbnail {
+  transform: scale(1.05);
+}
+
+.author-avatar {
+  background-size: cover;
+}

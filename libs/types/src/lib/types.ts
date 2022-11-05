@@ -14,3 +14,18 @@ export interface User {
 export interface ContributionDTO {
   amount: number;
 }
+
+
+export interface NewsAuthor {
+  avatarUrl: string;
+  name: string;
+  jobTitle: string;
+}
+
+export interface News {
+  author: NewsAuthor,
+  title: string;
+  thumbnailUrl: string;
+  body: string,
+  description: string;
+}
