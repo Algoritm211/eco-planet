@@ -11,5 +11,8 @@ import {MatIconModule} from "@angular/material/icon";
 @NgModule({
   declarations: [NewsComponent, NewsCardComponent],
   imports: [CommonModule, NewsRoutingModule, MatCardModule, MatButtonModule, MatIconModule],
+  exports: [
+    NewsCardComponent
+  ]
 })
 export class NewsModule {}

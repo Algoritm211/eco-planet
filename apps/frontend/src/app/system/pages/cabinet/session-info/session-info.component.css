@@ -1,0 +1,8 @@
+.progress-wrapper {
+  padding: calc(var(--spacing-unit) * 2px) 0;
+}
+
+
+.metrics {
+  font-weight: bold;
+}

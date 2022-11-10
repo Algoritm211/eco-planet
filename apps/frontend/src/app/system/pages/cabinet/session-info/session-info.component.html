@@ -1,0 +1,47 @@
+<!--TODO add after full provided information-->
+<!--*ngIf="(user.rank && user.currentMultiplier) else noInfo"-->
+<ng-container>
+  <div class="progress-wrapper">
+    <h2>Check your progress info 🔥</h2>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>bar_chart</mat-icon> Your current rank -&nbsp;<span class="metrics">{{user?.rank}}</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>This is your rank in all leadership table. The higher you are in the rating table, the more you will receive a multiplier for coins for your contribution. Enjoy</p>
+        <button mat-raised-button color="primary">
+          Go to leadership table
+        </button>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>show_chart</mat-icon> Your current multiplier -&nbsp;<span class="metrics">{{user?.currentMultiplier}}asd</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>Your environmental multiplier increases every time you turn in bottles. Do this more often to increase your multiplier</p>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon> monetization_on</mat-icon>
+            Possible earnings -&nbsp;<span class="metrics">323 NEAR</span>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>If you keep your position in the ranking until the end of the month, taking into account the multiplier, you will receive exactly this amount in NEAR to your wallet. A worthy reward for a worthy person</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</ng-container>
+
+
+<ng-template #noInfo>
+  <mat-card>
+    <mat-card-content>
+      <p>This card has divider and indeterminate progress as footer</p>
+    </mat-card-content>
+  </mat-card>
+</ng-template>

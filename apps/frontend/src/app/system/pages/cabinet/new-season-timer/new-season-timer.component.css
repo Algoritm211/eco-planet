@@ -1,0 +1,7 @@
+.timer {
+  font-size: large;
+  font-weight: bold;
+  font-style: italic;
+  margin: calc(var(--spacing-unit) * 2px) 0;
+  color: #330867;
+}

@@ -2,10 +2,12 @@
   <ng-container *ngIf="user$ | async else noUser">
     <div>
       <h1>New day, nice to see you!</h1>
+      <maorix-new-season-timer></maorix-new-season-timer>
       <mat-divider></mat-divider>
 
       <maorix-user-card [user]="(user$ | async)!"></maorix-user-card>
 
+      <maorix-session-info></maorix-session-info>
       <div class="button__group">
         <button
           mat-raised-button

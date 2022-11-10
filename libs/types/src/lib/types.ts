@@ -6,9 +6,13 @@ export interface User {
   // Number of bottles which was contributed
   contribution: number;
   // Name
-  name: string
-  // HERE QUESTIONG WHAT IT IS
-  socialRating: number
+  name: string;
+
+  socialRating: number;
+
+  currentMultiplier?: number;
+
+  rank?: number;
 }
 
 export interface ContributionDTO {
