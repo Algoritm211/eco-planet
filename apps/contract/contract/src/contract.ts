@@ -44,10 +44,19 @@ class EcoContract {
   @view({})
   getUser({id}: { id: string }) {
     near.log(`User with accountId=${id}`);
-    const user = UnorderedMap.deserialize(
-      (this.users.get(id)) as UnorderedMap
-    ) as UnorderedMap;
-    return this.convertToObject(user);
+    const rawUsers = UnorderedMap.deserialize(this.users).toArray();
+    const users = rawUsers.map(([, userData]: [string, UnorderedMap]) => {
+      return this.convertToObject<User>(userData)
+    }).sort((a, b) => a.contribution - b.contribution)
+
+    const userIndex = users.findIndex(user => user.accountId === id)
+
+    const user = {
+      ...users[userIndex],
+      rank: userIndex + 1,
+    }
+
+    return user;
   }
 
   @view({})
@@ -75,7 +84,7 @@ class EcoContract {
       Number(user.get('award')) + amount * Number(user.get('socialRating'))
     );
 
-    user.set('socialRating', Number(user.get('socialRating')) + 0.7)
+    user.set('socialRating', Number(user.get('socialRating')) + 0.5)
 
     this.users.set(userWallet, user);
     near.log(`User with hash ${userWallet} was updated`);

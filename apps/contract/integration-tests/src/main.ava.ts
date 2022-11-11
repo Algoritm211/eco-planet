@@ -33,22 +33,29 @@ test.afterEach(async (t) => {
 
 test('Add user', async (t) => {
   const mockUser = { name: 'Alex' };
-  const {root, contract} = t.context.accounts;
-  const user = await root.call<User>(contract, 'addUser', mockUser);
+  const {contract} = t.context.accounts;
+  const user = await contract.call<User>(contract, 'addUser', mockUser);
   t.deepEqual(
     user,
-    { accountId: 'test-account.test.near', name: 'Alex', award: 0, socialRating: 0 }
+    { accountId: 'test-account.test.near', name: 'Alex', contribution: 0, award: 0, socialRating: 0 }
   );
 })
 
 test('Get user', async (t) => {
   const mockUser = { name: 'Max' };
-  const {root, contract} = t.context.accounts;
-  await root.call<User>(contract, 'addUser', mockUser);
+  const {contract} = t.context.accounts;
+  await contract.call<User>(contract, 'addUser', mockUser);
   const user = await contract.view('getUser', {id: contract.accountId});
   t.deepEqual(
     user,
-    { accountId: 'test-account.test.near', name: 'Max', award: 0, socialRating: 0 }
+    {
+      accountId: 'test-account.test.near',
+      name: 'Max',
+      contribution: 0,
+      award: 0,
+      socialRating: 0,
+      rank: 1,
+    }
   )
 })
 
@@ -71,6 +78,6 @@ test('User contributes to environment', async (t) => {
 
   await root.call<User>(contract, 'newIncomeDataFromUser', {amount: 25});
   const newUser = await root.call<User>(contract, 'newIncomeDataFromUser', {amount: 25});
-  t.is(newUser.socialRating, 1.4)
-  t.is(newUser.award, 17.5)
+  t.is(newUser.socialRating, 1)
+  t.is(newUser.award, 12.5)
 });
