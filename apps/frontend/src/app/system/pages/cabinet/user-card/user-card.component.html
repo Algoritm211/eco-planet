@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="user$ | async as user">
   <mat-card-header>
     <mat-card-title>Address - {{ user.accountId }}</mat-card-title>
     <mat-card-subtitle>Here you can see your stats</mat-card-subtitle>

@@ -4,6 +4,11 @@ import {Subject, takeUntil, tap} from "rxjs";
 import {ContractService} from "./shared/contract/contract.service";
 import { EcoNEAR } from './shared/contract/near-interface';
 
+interface NavigationTab {
+  routerLink: string;
+  title: string
+}
+
 @Component({
   selector: 'maorix-eco-contract-root',
   templateUrl: './app.component.html',
@@ -11,6 +16,13 @@ import { EcoNEAR } from './shared/contract/near-interface';
 })
 export class AppComponent implements OnInit, OnDestroy {
   isSideNavOpened = false;
+
+  navigationTabs: NavigationTab[] = [
+    { routerLink: '/dashboard', title: '📊 Dashboard' },
+    { routerLink: '/news', title: '📰 News' },
+    { routerLink: '/cabinet', title: '🧑‍💻 Cabinet' },
+    { routerLink: '/qr-contribute', title: '🌎 Contribute' },
+  ]
 
   unsubscribe$ = new Subject<void>();
   constructor(

@@ -79,5 +79,5 @@ test('User contributes to environment', async (t) => {
   await root.call<User>(contract, 'newIncomeDataFromUser', {amount: 25});
   const newUser = await root.call<User>(contract, 'newIncomeDataFromUser', {amount: 25});
   t.is(newUser.socialRating, 1)
-  t.is(newUser.award, 12.5)
+  t.is(newUser.award, 37.5)
 });

@@ -51,8 +51,12 @@ class EcoContract {
 
     const userIndex = users.findIndex(user => user.accountId === id)
 
+    const resultUser = users[userIndex];
+    if (!resultUser) {
+      return;
+    }
     const user = {
-      ...users[userIndex],
+      ...resultUser,
       rank: userIndex + 1,
     }
 
@@ -79,12 +83,12 @@ class EcoContract {
 
     user.set('contribution', Number(user.get('contribution')) + amount);
 
+    user.set('socialRating', Number(user.get('socialRating')) + 0.5)
+
     user.set(
       'award',
       Number(user.get('award')) + amount * Number(user.get('socialRating'))
     );
-
-    user.set('socialRating', Number(user.get('socialRating')) + 0.5)
 
     this.users.set(userWallet, user);
     near.log(`User with hash ${userWallet} was updated`);

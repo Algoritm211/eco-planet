@@ -1,16 +1,36 @@
-import {Component, Input} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User} from "@maorix-contract/types";
+import {Select} from "@ngxs/store";
+import {UserState} from "../../../../shared/ngxs/user/user.state";
+import {Observable, Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'maorix-session-info',
   templateUrl: './session-info.component.html',
   styleUrls: ['./session-info.component.css'],
 })
-export class SessionInfoComponent {
+export class SessionInfoComponent implements OnInit, OnDestroy {
 
-  @Input() user: User
+  multiplier: number;
+  possibleEarnings: number;
 
-  panelOpenState = false;
+  unsubscribe$ = new Subject<void>()
+
+  @Select(UserState.getUser) user$: Observable<User>;
 
   constructor() {}
+
+  ngOnInit() {
+    this.user$.pipe(takeUntil(this.unsubscribe$)).subscribe((user) => {
+      if (user.rank) {
+        this.multiplier = user.rank * user.socialRating;
+        this.possibleEarnings = this.multiplier * user.award;
+      }
+    })
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 }

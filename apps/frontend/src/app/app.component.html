@@ -1,18 +1,9 @@
 <maorix-header (sideNavToggleEvent)="sideNavToggle()"></maorix-header>
 <mat-sidenav-container>
   <mat-sidenav [(opened)]="isSideNavOpened" class="sidenav" [autoFocus]="false">
-    <mat-nav-list>
-      <a routerLink="/dashboard" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">
-        Dashboard
-      </a>
-      <a routerLink="/news" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">
-        News
-      </a>
-      <a routerLink="/cabinet" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">
-        Cabinet
-      </a>
-      <a routerLink="/qr-contribute" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">
-        Contribute
+    <mat-nav-list *ngFor="let tab of navigationTabs">
+      <a [routerLink]="tab.routerLink" mat-list-item routerLinkActive="active-list-item" (click)="sideNavToggle()">
+        {{ tab.title }}
       </a>
     </mat-nav-list>
   </mat-sidenav>

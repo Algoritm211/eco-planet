@@ -31,7 +31,9 @@ export class CabinetComponent implements OnInit {
   }
 
   onCreateUser() {
-    this.store.dispatch(new AddNewUser(this.name))
+    if (this.name.trim().length) {
+      this.store.dispatch(new AddNewUser(this.name))
+    }
   }
 
   openChangeNameDialog(name: string) {
