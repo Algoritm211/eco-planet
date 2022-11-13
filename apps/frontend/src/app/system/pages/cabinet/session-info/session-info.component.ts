@@ -3,6 +3,7 @@ import {User} from "@maorix-contract/types";
 import {Select} from "@ngxs/store";
 import {UserState} from "../../../../shared/ngxs/user/user.state";
 import {Observable, Subject, takeUntil} from "rxjs";
+import {getMultiplier} from "./utils/multiplier";
 
 @Component({
   selector: 'maorix-session-info',
@@ -23,7 +24,7 @@ export class SessionInfoComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.user$.pipe(takeUntil(this.unsubscribe$)).subscribe((user) => {
       if (user.rank) {
-        this.multiplier = user.rank * user.socialRating;
+        this.multiplier = getMultiplier(user.rank);
         this.possibleEarnings = this.multiplier * user.award;
       }
     })
