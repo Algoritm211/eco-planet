@@ -1,105 +1,48 @@
 
 
-# MaorixContract
+# EcoPlanet
 
-This project was generated using [Nx](https://nx.dev).
+## Run application on your device
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+1. Run `npm install`
+2. Deploy contract running `npm run deploy` in `apps/contract` folder
+3. Change deployed contract id from mock to read in `apps/frontend/src/app/shared/constants.ts`
+4. Run npm run start
 
-🔎 **Smart, Fast and Extensible Build System**
+Open `http://localhost:4200` with your browser to see the result.
 
-## Quick Start & Documentation
+# Project overview
 
-[Nx Documentation](https://nx.dev/getting-started/intro)
+We are a team of crypto-enthusiasts, which worried about the ecological situation on Earth. 
 
-[Mental model is a good starting point for those who like to understand things theoretically first.](https://nx.dev/concepts/mental-model)
+Nowadays around the world, people have a lot of ideas about how to reduce the amount of plastic, how to make goods with eco-materials, how to protect animals etc.
 
-[Interactive Tutorial](https://nx.dev/getting-started/angular-tutorial)
+But these solutions have one big problem - these activities do not attract enough people at least because they are mostly voluntary
 
-## Adding capabilities to your workspace
+And we can introduce new solution with the usage of blockchain and cryptocurrency how to attract people to reduce the amount of plastic around the Earth. It’s similar to **play-to-earn** business model, where people will have a worthy reward for their contribution to cleaning the planet from pollution.
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+---
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+## Main problem
 
-Below are our core plugins:
+The problem of environmental pollution is becoming more and more urgent every year. Pollution is killing, changing the cycle of the seasons and bringing the possibility of disasters across the world closer. 
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+So, in the last few years across a lot of countries in Europe and the USA appeared automatic machines which allow you to put plastic bottles inside and receive rewards for recycling. The reward is a certain amount of money which you can spend in the shop or market where machine is located.
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+### Ok, but what product we are offering?
 
-## Generate an application
+We have developed an application using NEAR smart-contracts in order to enable enthusiasts and volunteers around the world to receive additional rewards for cleaning the Earth and at the same time popularize cryptocurrencies (in particular NEAR) among a new generation.
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+A feature and one of the main advantages is that we can use already existing plastic recycling machines by adding just a QR code at the bottom of the check they give you.
 
-> You can use any of the plugins above to generate applications as well.
+![Diagram](https://oleksii-test-s3.s3.eu-central-1.amazonaws.com/project-details.png)
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+By handing over bottles, users receive a cryptocurrency that they can withdraw at the end of the season.
 
-## Generate a library
+At the same time, we offer gamification including a general table of users, a social rating, as well as multipliers with which users can earn more by moving up in the rating table.
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+Each season continues for at least a month, and users have the possibility of completing unique seasonal and weekly tasks, by completing which the user can receive either additional coins, social points or other interesting rewards.
 
-> You can also use any of the plugins above to generate libraries as well.
+### Innovation
 
-Libraries are shareable across libraries and applications. They can be imported from `@maorix-contract/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+We are using blockchain to solve environmental problems, as well as popularizing the crypto industry through socially significant activities. A large number of governments are highly-interested in plastic recycling and our project has a potential chance of getting funding as an initiative to speed up and improve this process.
