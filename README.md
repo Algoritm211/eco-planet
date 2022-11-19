@@ -7,7 +7,7 @@
 1. Run `npm install`
 2. Deploy contract running `npm run deploy` in `apps/contract` folder
 3. Change deployed contract id from mock to read in `apps/frontend/src/app/shared/constants.ts`
-4. Run npm run start
+4. Run `npm run start`
 
 Open `http://localhost:4200` with your browser to see the result.
 
