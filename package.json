@@ -8,6 +8,7 @@
     "contract:test": "nx run contract:test --skip-nx-cache",
     "postinstall": "./postinstall.sh",
     "start": "nx serve",
+    "dev:devices:serve": "ng serve --host 0.0.0.0 --disableHostCheck true",
     "build": "nx build",
     "test": "nx test"
   },
