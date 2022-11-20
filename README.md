@@ -50,8 +50,8 @@ We are using blockchain to solve environmental problems, as well as popularizing
 # Team
 ### <i>Maxim Radko</i>
   Contacts:
-  * ##### LinkedIn [Click on this link](https://www.linkedin.com/in/maxim-radko/)
+  * ##### LinkedIn - [Click here](https://www.linkedin.com/in/maxim-radko/)
   
 ### <i>Alexey Horbunov</i>
   Contacts:
-  * ##### LinkedIn [Click on this link](https://www.linkedin.com/in/horbunov/)
+  * ##### LinkedIn - [Click here](https://www.linkedin.com/in/horbunov/)
