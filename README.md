@@ -46,3 +46,12 @@ Each season continues for at least a month, and users have the possibility of co
 ### Innovation
 
 We are using blockchain to solve environmental problems, as well as popularizing the crypto industry through socially significant activities. A large number of governments are highly-interested in plastic recycling and our project has a potential chance of getting funding as an initiative to speed up and improve this process.
+
+# Team
+### <i>Maxim Radko</i>
+  Contacts:
+  * ##### LinkedIn [Click on this link](https://www.linkedin.com/in/maxim-radko/)
+  
+### <i>Alexey Horbunov</i>
+  Contacts:
+  * ##### LinkedIn [Click on this link](https://www.linkedin.com/in/horbunov/)
