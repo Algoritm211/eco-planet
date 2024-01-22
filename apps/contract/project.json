@@ -8,9 +8,7 @@
       "executor": "nx:run-commands",
       "inputs": ["default"],
       "options": {
-        "commands": [
-          "npm run build"
-        ],
+        "commands": ["npm run build"],
         "cwd": "apps/contract/contract"
       }
     },
@@ -19,9 +17,7 @@
       "dependsOn": ["build"],
       "inputs": ["default"],
       "options": {
-        "commands": [
-          "npm run test"
-        ],
+        "commands": ["npm run test"],
         "cwd": "apps/contract/"
       }
     }
